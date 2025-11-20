@@ -486,6 +486,13 @@ resource "aws_lb_listener_rule" "this" {
     }
   }
 
+  # See: DPLAT-746
+  lifecycle {
+    ignore_changes = [
+      action[0].target_group_arn,
+    ]
+  }
+
   tags = merge(local.tags, try(each.value.tags, {}))
 }
 
