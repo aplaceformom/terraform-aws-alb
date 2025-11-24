@@ -491,6 +491,7 @@ resource "aws_lb_listener_rule" "this" {
     ignore_changes = [
       action[0].target_group_arn,
       condition,
+      priority,
     ]
   }
 
